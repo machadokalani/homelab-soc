@@ -91,7 +91,7 @@ configuração futura quebre o sistema.
 
 ## Próximos Passos
 
-- [ ] Atualizar o sistema (`apt update && apt upgrade`)
+- [x] Atualizar o sistema (`apt update && apt upgrade`)
 - [ ] Praticar navegação básica no terminal (cd, ls, chmod, chown, etc.)
 - [ ] Estudar permissões e diferença entre root e usuário comum
 - [ ] Configurar modo de rede da VM (NAT vs Rede Interna/Host-Only)
