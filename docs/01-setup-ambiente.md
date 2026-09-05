@@ -94,6 +94,6 @@ configuração futura quebre o sistema.
 - [x] Atualizar o sistema (`apt update && apt upgrade`)
 - [x] Praticar navegação básica no terminal (cd, ls, chmod, chown, etc.)
 - [x] Estudar permissões e diferença entre root e usuário comum
-- [ ] Configurar modo de rede da VM (NAT vs Rede Interna/Host-Only)
+- [x] Configurar modo de rede da VM (NAT vs Rede Interna/Host-Only)
 - [ ] Criar snapshot de checkpoint após as atualizações
 - [ ] Montar segunda VM (máquina alvo) e instalar um SIEM (Wazuh)
