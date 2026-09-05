@@ -84,5 +84,5 @@ configuração futura quebre o sistema.
 - [x] Praticar navegação básica no terminal (cd, ls, chmod, chown, etc.)
 - [x] Estudar permissões e diferença entre root e usuário comum
 - [x] Configurar modo de rede da VM (NAT vs Rede Interna/Host-Only)
-- [ ] Criar snapshot de checkpoint após as atualizações
+- [x] Criar snapshot de checkpoint após as atualizações
 - [ ] Montar segunda VM (máquina alvo) e instalar um SIEM (Wazuh)
