@@ -2,11 +2,6 @@
 
 ## Objetivo
 
-Atualmente estou em processo de transição de carreira, saindo de jogador 
-profissional de poker para analista de cybersegurança. Este projeto é um 
-laboratório de estudo para aprender e aperfeiçoar conceitos práticos de 
-segurança da informação.
-
 O primeiro passo foi configurar uma VM com Ubuntu "cru", sem nenhuma 
 ferramenta extra, para construir uma base sólida de entendimento do Linux 
 antes de avançar para ambientes mais complexos. A partir dessa base, a 
@@ -14,12 +9,6 @@ infraestrutura vai crescer gradualmente — próxima etapa envolve configurar
 rede entre VMs e introduzir uma máquina alvo e um SIEM.
 
 ## Ambiente
-
-**Máquina host:**
-- Notebook Acer Nitro
-- Processador Intel Core i5 (13ª geração)
-- GPU RTX 4050
-- 16GB RAM DDR5
 
 **Hypervisor:**
 - VirtualBox
