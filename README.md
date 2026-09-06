@@ -28,10 +28,12 @@ conectadas via rede interna isolada.
 
 | Data | Etapa | Status |
 |------|-------|--------|
-| 04/09/2026 | Setup da VM base (Ubuntu + VirtualBox) | ✅ Concluído |
-| 05/09/2026 | Configuração da rede interna do lab | ✅ Concluído |
+| 04/09/2026 | Setup da VM base de estudo (Ubuntu) | ✅ Concluído |
+| 05/09/2026 | Configuração inicial da rede interna do lab | ✅ Concluído |
+| 06/09/2026 | Configuração da VM Wazuh (Ubuntu) | ✅ Concluído |
 
 ## 📚 Documentação detalhada
 
 - [Setup do Ambiente — VM Base](docs/01-setup-ambiente.md)
-- [Configuração de Rede — VM Base](docs/02-configuracao-rede.md)
+- [Configuração de Rede](docs/02-configuracao-rede.md)
+- [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
