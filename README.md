@@ -1,6 +1,6 @@
 # Homelab SOC — Da instalação ao detection engineering
 
-## 🎯 Objetivo
+##  Objetivo
 
 Projeto de laboratório pessoal para aprender e praticar conceitos de 
 cibersegurança na prática, como parte da minha transição de carreira 
@@ -11,18 +11,17 @@ A ideia é documentar cada etapa — desde a configuração inicial do
 ambiente até, eventualmente, um ambiente completo com SIEM, máquina 
 alvo e geração/análise de logs reais.
 
-## 🏗️ Arquitetura
+## Arquitetura
 
-Estágio atual: uma única VM Ubuntu, servindo como base de aprendizado 
-de Linux e virtualização.
-
-Planejado: rede de estudo com múltiplas VMs (máquina alvo + SIEM), 
-conectadas via rede interna isolada.
+Estágio atual: 
+- VM Base de estudos (UBUNTU)
+- Wazuh Manager (UBUNTU SERVER)
 
 ## 🛠️ Stack utilizada
 
 - VirtualBox (hypervisor)
 - Ubuntu 25.04 "Plucky Puffin" (VM base)
+- Ubuntu Server 26.04 LTS "Resonant Rhino" (64-bit) (Wazuh)
 
 ## 📋 Progresso
 
