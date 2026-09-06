@@ -32,7 +32,7 @@ Recursos alocados à VM:
 > compensando com atenção ao consumo do OpenSearch (indexer) caso
 > necessário.
 
-## 🛠️ Processo
+## Processo
 
 **Instalação do Wazuh (modo all-in-one)**
 
