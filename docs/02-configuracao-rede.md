@@ -1,6 +1,6 @@
 # Configuração de Rede da VM Base
 
-## 🎯 Objetivo
+## Objetivo
 Configurar a VM base do laboratório com **duas interfaces de rede** para
 separar dois contextos distintos: acesso à internet (para instalar
 pacotes e ferramentas) e uma rede isolada, exclusiva do lab, onde o
@@ -11,31 +11,7 @@ Esse isolamento é um princípio básico de qualquer lab de segurança:
 nunca deixar tráfego de teste/ataque com rota direta para fora do
 ambiente controlado.
 
-## 🌐 Modos de rede — o que foi avaliado
-
-| Modo | Acesso à internet | Visível para outras VMs | Visível para o host | Uso no lab |
-|------|---------------------|---------------------------|------------------------|------------|
-| NAT | Sim | Não | Não | Dar internet à VM (updates, instalação de pacotes) |
-| Rede Interna | Não | Sim (só entre VMs na mesma rede) | Não | Isolar o tráfego "real" do lab entre as VMs |
-| Host-Only | Não | Sim | Sim | Alternativa quando é preciso acessar dashboards da VM pelo navegador do host |
-
-Decisão: usar **NAT + Rede Interna** na mesma VM, via duas placas de
-rede separadas.
-
-## 🛠️ Configuração no VirtualBox
-
-Com a VM desligada, em **Configurações → Rede**:
-
-**Adaptador 1 — NAT**
-- Habilitado, conectado a `NAT`
-- Recebe IP automaticamente via DHCP interno do VirtualBox
-
-**Adaptador 2 — Rede Interna**
-- Habilitado, conectado a `Rede Interna`
-- Nome da rede: `soclab` (mesmo nome será usado em todas as próximas VMs do ambiente)
-- Modo Promíscuo: `Negar` (padrão seguro; só precisa ser alterado para `Permitir VMs` na futura VM do SIEM, que precisa enxergar o tráfego das demais)
-
-## 🖥️ IP estático via Netplan
+##  IP estático via Netplan
 
 A interface NAT recebe IP automaticamente (DHCP). A Rede Interna não
 tem servidor DHCP — por ser uma rede isolada, sem roteador — então o
@@ -62,7 +38,7 @@ Aplicação:
 sudo netplan apply
 ```
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 Ao aplicar, apareceram avisos:
 ```
@@ -80,7 +56,7 @@ sudo chmod 600 /etc/netplan/50-cloud-init.yaml
   não impediu a aplicação da configuração, apenas usou um caminho
   alternativo internamente.
 
-## ✅ Verificação final
+##  Verificação final
 
 ```bash
 ip a
@@ -100,7 +76,4 @@ Resultado confirmando as duas interfaces ativas:
 | enp0s3 | NAT | 10.0.2.15 | DHCP automático |
 | enp0s8 | Interna (`soclab`) | 192.168.56.10 | Estático (Netplan) |
 
-## ➡️ Próximos passos
-- Criar a segunda VM do lab (máquina alvo ou SIEM)
-- Repetir a mesma configuração de rede (NAT + Rede Interna `soclab`), com IP estático seguinte (ex: `192.168.56.11`)
-- Testar conectividade entre as VMs via `ping` na rede interna
+
