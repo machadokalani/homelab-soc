@@ -37,6 +37,6 @@ Estágio atual:
 ## 📚 Documentação detalhada
 
 - [Setup do Ambiente — VM Base](docs/01-setup-ambiente.md)
-    - [Setup do Ambiente — VM Alvo](docs/01.02-setup-alvo.md)
+    - [Setup do Ambiente — VM Alvo](docs/01.01-setup-alvo.md)
 - [Configuração de Rede](docs/02-configuracao-rede.md)
 - [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
