@@ -32,7 +32,8 @@ Estágio atual:
 | 04/09/2026 | Setup da VM base de estudo (Ubuntu) | ✅ Concluído |
 | 05/09/2026 | Configuração inicial da rede interna do lab | ✅ Concluído |
 | 06/09/2026 | Configuração da VM Wazuh (Ubuntu) | ✅ Concluído |
-| 09/09/2026 | Setup da VM alvo | Em progresso |
+| 09/09/2026 | Configuração da VM alvo | ✅ Concluído |
+| 11/09/2026 | Análise inicial de dashboard / falsos positivos | Em Progresso |
 
 ## 📚 Documentação detalhada
 
