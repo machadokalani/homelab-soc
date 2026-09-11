@@ -79,10 +79,7 @@ distribuições baseadas em Debian/Ubuntu — a verificação de
 assinaturas genéricas de rootkit por vezes coincide com padrões de
 binários legítimos do sistema.
 
-##  Próximos Passos
-- Ajustar a regra do rootcheck para suprimir o falso positivo
-  identificado (ou documentar a supressão como exercício)
-- Adicionar um segundo adaptador de Rede Interna (`soclab`) na
+
   `wazuh-manager`, com IP estático seguinte na faixa `192.168.56.x`,
   replicando a configuração da VM base
 - Montar a VM Windows 10 (máquina alvo)
