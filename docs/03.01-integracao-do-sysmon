@@ -1,0 +1,40 @@
+# Integração do Sysmon com o Wazuh e Validação do Pipeline de Telemetria
+
+## Objetivo
+
+Documentar a configuração do agente Wazuh instalado na VM Windows 10 para capturar eventos do Sysmon através do canal `Microsoft-Windows-Sysmon/Operational`, e validar que o pipeline completo de telemetria — do endpoint até o dashboard — está funcionando de ponta a ponta.
+
+## Ambiente
+
+VM Windows 10 com Sysmon já instalado, utilizando a configuração de referência da comunidade (SwiftOnSecurity). Agente Wazuh 4.14 instalado e já registrado no manager.
+
+## Processo
+
+Com o agente Wazuh já ativo e se comunicando normalmente com o manager, o próximo passo era garantir que ele estivesse de fato consumindo os eventos gerados pelo Sysmon, e não apenas os logs padrão do Windows (Application, Security, System), que por padrão já vêm configurados no `ossec.conf`.
+
+A configuração exigiu editar diretamente o arquivo `ossec.conf` do agente, localizado em `C:\Program Files (x86)\ossec-agent\`, adicionando um novo bloco `<localfile>` especificando o canal do Sysmon como fonte, com o formato de leitura `eventchannel`:
+
+```xml
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+```
+
+Esse bloco foi posicionado entre os blocos já existentes de "Application" e "Security", mantendo a mesma estrutura e indentação do restante do arquivo.
+
+Para validar que os eventos estavam de fato chegando, uma ação simples foi executada no Windows (reinício do próprio serviço do agente, via `net.exe`), e o dashboard foi consultado na aba Threat Hunting. A primeira tentativa de filtrar por `rule.groups: sysmon` não retornou nenhum resultado, o que inicialmente sugeria falha na captura. No entanto, ao remover o filtro e inspecionar os eventos brutos na aba "Events", diversas entradas recentes apareceram com descrições características de atividade de processo — como "Discovery activity executed" e "Powershell was used to delete files or directories" — indicando que o Wazuh possui um conjunto de regras próprio para interpretar eventos de criação de processo, não necessariamente agrupados sob a tag genérica "sysmon".
+
+A confirmação definitiva veio ao expandir os detalhes de um desses eventos: os campos presentes incluíam `data.win.eventdata.commandLine`, `data.win.eventdata.hashes` e `data.win.eventdata.image`, com a linha de comando completa do processo, hashes do binário (MD5, SHA256, IMPHASH) e caminho completo do executável. Esse nível de granularidade é exclusivo do Sysmon — logs padrão do Windows Event Log não capturam esses metadados — confirmando que o canal estava sendo lido corretamente pelo agente e processado pelo manager.
+
+Coincidentemente, o evento capturado foi o próprio comando `net.exe START Wazuh`, usado minutos antes para reiniciar o serviço do agente após a edição do `ossec.conf` — uma demonstração inadvertida, porém eficaz, de que o Sysmon estava monitorando criação de processos em tempo real, inclusive as ações do próprio operador durante a configuração.
+
+## Lições Aprendidas
+
+A ausência de resultados ao filtrar por `rule.groups: sysmon` foi um lembrete de que a ausência de dados em uma busca filtrada não significa necessariamente ausência de dados — pode significar que a busca partiu de uma suposição errada sobre como os dados estão categorizados. Antes de concluir que a integração havia falhado, foi necessário voltar a uma visão mais ampla (sem filtros) e inspecionar os eventos manualmente, o que revelou que o Wazuh classifica eventos de processo do Sysmon sob grupos de regras mais específicos (como os relacionados a atividade de descoberta e uso de PowerShell) em vez de uma tag genérica única.
+
+Esse episódio reforça um princípio de troubleshooting já registrado anteriormente no laboratório: ao não encontrar o resultado esperado, é mais produtivo widen the net (ampliar o escopo da busca) antes de assumir falha na configuração. A causa raiz de um "resultado vazio" pode estar tanto na fonte de dados quanto na pergunta feita a ela.
+
+## Próximos Passos
+
+Com o pipeline completo validado (Sysmon → Agente → Manager → Indexer → Dashboard), o laboratório está pronto para a próxima fase de trabalho: a criação e o teste de regras de correlação (por exemplo, para detecção de força bruta ou execução suspeita de PowerShell), o tratamento do falso positivo de rootcheck identificado na wazuh-manager, e a eventual segmentação de rede via adaptador `soclab` como fase de hardening arquitetural (v2).
