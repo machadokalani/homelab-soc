@@ -18,7 +18,7 @@ Estágio atual:
 - Wazuh Manager (UBUNTU SERVER)
 - VM Alvo (WINDOWS 10)
 
-## 🛠️ Stack utilizada
+##  Stack utilizada
 
 - VirtualBox (hypervisor)
 - Ubuntu 25.04 "Plucky Puffin" (VM base)
