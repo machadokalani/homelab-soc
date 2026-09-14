@@ -40,4 +40,4 @@ Estágio atual:
 - [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
     - [Integração do Sysmon](docs/03.01-integracao-do-sysmon.md)
 - [Simulação de mitre att&ck T1059.001](docs/04.simulacao-de-ataque-T1059.001.md)
-- [Simulação de mitre att&ck T1059.001](docs/05.simulacao-de-ataque-T1136.001.md)
+- [Simulação de mitre att&ck T1136.001](docs/05.simulacao-de-ataque-T1136.001.md)
