@@ -34,6 +34,7 @@ Estágio atual:
 | 06/09/2026 | Configuração da VM Wazuh (Ubuntu) | ✅ Concluído |
 | 09/09/2026 | Configuração da VM alvo | ✅ Concluído |
 | 11/09/2026 | Integração do Sysmon e validação do pipeline de telemetria | ✅ Concluído |
+| 14/09/2026 | Simulação de mitre att&ck T1059.001 | ✅ Concluído |
 
 ## 📚 Documentação detalhada
 
@@ -42,3 +43,4 @@ Estágio atual:
 - [Configuração de Rede](docs/02-configuracao-rede.md)
 - [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
     - [Integração do Sysmon](docs/03.01-integracao-do-sysmon.md)
+- [Simulação de mitre att&ck T1059.001](docs/04.simulacao-de-ataque-T1059.001.md)
