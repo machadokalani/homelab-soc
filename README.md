@@ -43,8 +43,8 @@ Estágio atual:
 
 ### Simulações de Ataque (Atomic Red Team)
 Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de detecção ponta a ponta.
-- [T1059.001 — PowerShell Encoded Command](docs/atomic-red-team/01-t1059.001-encoded-comm...md)
-- [T1136.001 — Criação de Conta e Escalonamento de Privilégio](docs/atomic-red-team/02-t1136.001-privilege-escalat...md)
+- [T1059.001 — PowerShell Encoded Command](docs/atomic-red-team/01-t1059.001-encoded-command.md)
+- [T1136.001 — Criação de Conta e Escalonamento de Privilégio](docs/atomic-red-team/02-t1136.001-privilege-escalation.md)
 
 ### Playbooks de Triagem
 Processos reutilizáveis de decisão para triagem de alertas — diferente dos docs acima, que registram investigações pontuais, estes documentam o raciocínio de análise aplicável a qualquer alerta futuro do mesmo tipo.
