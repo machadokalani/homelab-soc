@@ -20,19 +20,6 @@ Estágio atual:
 - Ubuntu Server 26.04 LTS "Resonant Rhino" (64-bit) (Wazuh)
 - Windows 10 (64-bit) (VM alvo)
 
-## 📋 Progresso
-
-| Data | Etapa | Status |
-|------|-------|--------|
-| 04/09/2026 | Setup da VM base de estudo (Ubuntu) | ✅ Concluído |
-| 05/09/2026 | Configuração inicial da rede interna do lab | ✅ Concluído |
-| 06/09/2026 | Configuração da VM Wazuh (Ubuntu) | ✅ Concluído |
-| 09/09/2026 | Configuração da VM alvo | ✅ Concluído |
-| 11/09/2026 | Integração do Sysmon e validação do pipeline de telemetria | ✅ Concluído |
-| 14/09/2026 | Simulação de mitre att&ck T1059.001 | ✅ Concluído |
-| 14/09/2026 | Simulação de mitre att&ck T1136.001 | ✅ Concluído |
-| 14/09/2026 | Playbook do mitre att&ck T1136.001 | ✅ Concluído |
-
 ## 📁 Documentação detalhada
 
 ### Setup e Infraestrutura
@@ -50,3 +37,16 @@ Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de 
 ### Playbooks de Triagem
 Processos reutilizáveis de decisão para triagem de alertas — diferente dos docs acima, que registram investigações pontuais, estes documentam o raciocínio de análise aplicável a qualquer alerta futuro do mesmo tipo.
 - [Triagem — Criação de Conta e Escalonamento de Privilégio](docs/playbooks/02-triagem-criacao-conta-escalonamento.md)
+
+## 📋 Progresso
+
+| Data | Etapa | Status |
+|------|-------|--------|
+| 04/09/2026 | Setup da VM base de estudo (Ubuntu) | ✅ Concluído |
+| 05/09/2026 | Configuração inicial da rede interna do lab | ✅ Concluído |
+| 06/09/2026 | Configuração da VM Wazuh (Ubuntu) | ✅ Concluído |
+| 09/09/2026 | Configuração da VM alvo | ✅ Concluído |
+| 11/09/2026 | Integração do Sysmon e validação do pipeline de telemetria | ✅ Concluído |
+| 14/09/2026 | Simulação de mitre att&ck T1059.001 | ✅ Concluído |
+| 14/09/2026 | Simulação de mitre att&ck T1136.001 | ✅ Concluído |
+| 14/09/2026 | Playbook do mitre att&ck T1136.001 | ✅ Concluído |
