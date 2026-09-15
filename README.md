@@ -36,7 +36,9 @@ Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de 
 
 ### Playbooks de Triagem
 Processos reutilizáveis de decisão para triagem de alertas — diferente dos docs acima, que registram investigações pontuais, estes documentam o raciocínio de análise aplicável a qualquer alerta futuro do mesmo tipo.
-- [Triagem — Criação de Conta e Escalonamento de Privilégio](docs/playbooks/02-criacao-conta-escalonamento.md)
+- [Execução suspeita de windows e powershell](docs/playbooks/01-execucao-suspeita-windows-powershell.md)
+- [Criação de Conta e Escalonamento de Privilégio](docs/playbooks/02-criacao-conta-escalonamento.md)
+
 
 ## 📋 Progresso
 
@@ -50,3 +52,4 @@ Processos reutilizáveis de decisão para triagem de alertas — diferente dos d
 | 14/09/2026 | Simulação de mitre att&ck T1059.001 | ✅ Concluído |
 | 14/09/2026 | Simulação de mitre att&ck T1136.001 | ✅ Concluído |
 | 14/09/2026 | Playbook do mitre att&ck T1136.001 | ✅ Concluído |
+| 14/09/2026 | Playbook do mitre att&ck T1059.001 | ✅ Concluído |
