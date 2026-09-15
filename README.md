@@ -52,4 +52,4 @@ Processos reutilizáveis de decisão para triagem de alertas — diferente dos d
 | 14/09/2026 | Simulação de mitre att&ck T1059.001 | ✅ Concluído |
 | 14/09/2026 | Simulação de mitre att&ck T1136.001 | ✅ Concluído |
 | 14/09/2026 | Playbook do mitre att&ck T1136.001 | ✅ Concluído |
-| 14/09/2026 | Playbook do mitre att&ck T1059.001 | ✅ Concluído |
+| 15/09/2026 | Playbook do mitre att&ck T1059.001 | ✅ Concluído |
