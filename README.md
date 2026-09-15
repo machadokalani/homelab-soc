@@ -49,5 +49,3 @@ Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de 
 ### Playbooks de Triagem
 Processos reutilizáveis de decisão para triagem de alertas — diferente dos docs acima, que registram investigações pontuais, estes documentam o raciocínio de análise aplicável a qualquer alerta futuro do mesmo tipo.
 - [Triagem — Criação de Conta e Escalonamento de Privilégio](docs/playbooks/02-triagem-criacao-conta-esca...md)
-- [Simulação de mitre att&ck T1059.001](docs/04.simulacao-de-ataque-T1059.001.md)
-- [Simulação de mitre att&ck T1136.001](docs/05.simulacao-de-ataque-T1136.001.md)
