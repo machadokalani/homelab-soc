@@ -28,6 +28,7 @@ Estágio atual:
 - [Configuração de Rede](docs/02-configuracao-rede.md)
 - [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
   - [Integração do Sysmon](docs/03.01-integracao-do-sysmon.md)
+- [Tuning de Falso Positivo - Rootcheck](docs/04-tuning-de-falso-positivo-rootcheck.md)
 
 ### Simulações de Ataque (Atomic Red Team)
 Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de detecção ponta a ponta.
@@ -53,3 +54,5 @@ Processos reutilizáveis de decisão para triagem de alertas — diferente dos d
 | 14/09/2026 | Simulação de mitre att&ck T1136.001 | ✅ Concluído |
 | 14/09/2026 | Playbook do mitre att&ck T1136.001 | ✅ Concluído |
 | 15/09/2026 | Playbook do mitre att&ck T1059.001 | ✅ Concluído |
+| 15/09/2026 | Tuning de Falso Positivo - Rootcheck| ✅ Concluído |
+
