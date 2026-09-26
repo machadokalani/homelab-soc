@@ -64,7 +64,7 @@ Quando uma rede é definida, o libvirt gera um UUID para ela e um MAC para a bri
 
 ### 3. Aplicando a rede
 
-Atenção à conexão do `virsh`: o virt-manager usa `qemu:///system`, mas o `virsh` rodado como usuário comum pode se conectar a `qemu:///session`, onde a rede não apareceria para as VMs do virt-manager. Por isso, os comandos abaixo explicitam a conexão (alternativa: rodar com `sudo`).
+Atenção à conexão do `virsh`: o virt-manager usa `qemu:///system`, mas o `virsh` rodado como usuário comum pode se conectar a `qemu:///session`, onde a rede não apareceria para as VMs do virt-manager. Por isso, os comandos abaixo explicitam a conexão com `-c qemu:///system`. No dia a dia, o mais prático é fixar isso no `.bashrc` com `export LIBVIRT_DEFAULT_URI=qemu:///system` e rodar o `virsh` **sem sudo**, com o usuário no grupo `libvirt` (ver Lições Aprendidas).
 
 A partir da raiz do repositório:
 
@@ -96,7 +96,43 @@ virsh -c qemu:///system net-dhcp-leases soclab
 
 Resultado esperado: `soclab` com estado `active` e autostart `yes`; `virbr10` com `10.10.10.1/24`; e cada VM criada com o MAC reservado aparecendo com o IP correspondente.
 
-[PREENCHER: saída real da verificação, especialmente a VM `kali` recebendo `10.10.10.10`]
+#### Resultado real
+
+Teste por camadas, de dentro para fora: se uma camada falha, as de cima nem precisam ser testadas.
+
+**Dentro da VM `kali`**
+
+```text
+$ ip -br addr
+lo      UNKNOWN  127.0.0.1/8 ::1/128
+eth0    UP       10.10.10.10/24 fe80::5054:ff:fe10:10/64
+
+$ ip route
+default via 10.10.10.1 dev eth0 proto dhcp src 10.10.10.10 metric 100
+10.10.10.0/24 dev eth0 proto kernel scope link src 10.10.10.10 metric 100
+```
+
+| Camada | Teste | Resultado |
+|---|---|---|
+| DHCP / reserva por MAC | `ip -br addr` | `10.10.10.10/24` ✔ |
+| Rota padrão | `ip route` | `default via 10.10.10.1` (proto dhcp) ✔ |
+| Enlace com o host | `ping 10.10.10.1` | 0% loss, ~0.4 ms ✔ |
+| NAT / saída | `ping 1.1.1.1` | 0% loss, ~30 ms ✔ |
+| DNS | `ping kali.org` | resolveu e respondeu ✔ |
+
+**No host**
+
+```text
+$ ping -c3 10.10.10.10
+3 packets transmitted, 3 received, 0% packet loss
+
+$ ip -br addr show virbr10
+virbr10  UP  10.10.10.1/24
+```
+
+Observações:
+- O IPv6 link-local `fe80::5054:ff:fe10:10` é derivado do MAC fixo `52:54:00:10:00:10` (EUI-64).
+- TTL 64 nas respostas locais e 55 vindo da internet: TTL inicial de Linux menos os saltos no caminho.
 
 ### 5. Alterando a rede depois
 
@@ -114,10 +150,24 @@ Editar direto com `virsh net-edit` funciona, mas deixa o XML do repositório des
 
 ## Lições Aprendidas
 
-[PREENCHER: o que aconteceu de fato ao criar e aplicar a rede (erros, surpresas, o que precisou ajustar)]
+Problemas encontrados ao montar o host KVM, a rede e a primeira VM (Kali):
+
+| Problema | Causa | Solução / aprendizado |
+|---|---|---|
+| `Package 'qemu-kvm' has no installation candidate` | No Ubuntu 26.04, `qemu-kvm` é um pacote virtual com dois candidatos (`qemu-system-x86` e `-hwe`) e o apt não escolhe por mim | Instalar `qemu-system-x86` explicitamente. Tutoriais antigos envelhecem; ler a mensagem do apt |
+| `virsh` sem sudo: `Permission denied` no `libvirt-sock` | `usermod` funcionou (`getent group libvirt` mostrava o usuário), mas a sessão não recarregou os grupos (`groups` não mostrava) | Reboot. `getent` = o que está gravado no sistema; `groups` = o que a sessão atual tem |
+| Risco de rede e VM em instâncias diferentes | `virsh` como usuário comum conecta em `qemu:///session` por padrão | `export LIBVIRT_DEFAULT_URI=qemu:///system` no `.bashrc` |
+| Tentação de usar `sudo virsh` | Contorna o sintoma, mas cria arquivos de VM com dono root | Gerenciar VMs sempre sem sudo; sudo só para arquivos do sistema |
+| ISO em `~/Downloads` inacessível para a VM | O QEMU roda como `libvirt-qemu`, e a home no Ubuntu é `750` | ISOs em `/var/lib/libvirt/images/iso/` |
+| Colisão de sub-rede | Uma faixa que conflita com rota existente quebra o roteamento | O `net-start` do libvirt já recusa redes em conflito; suspeitar disso ao usar VPNs `10.x` |
+| `virt-xml ... discard=unmap` retornou "No XML diff" | O `virt-install` recente já habilita `discard=unmap` em qcow2 | Ler o warning: ele dizia exatamente o que aconteceu |
+| `fstrim` depois do snapshot não liberou espaço no host | O snapshot mantém os blocos antigos referenciados | Ordem certa: `fstrim` → snapshot |
+| `GSpice-CRITICAL ... usbredir` no terminal | Nível de log da biblioteca: não há canal de USB redirect configurado | Inofensivo. Severidade do log ≠ impacto real (vale para SOC também) |
+| `change-media` falhou no `vda` e no `sda` | `vda` é disco fixo; `sda` já estava vazio, porque o virt-install ejeta o ISO ao terminar | Conferir com `virsh domblklist` antes |
+| Disco "40" virou "42.9" no instalador | GiB (base 2) vs GB (base 10) | Mesma quantidade; qcow2 é thin, e o `virsh vol-info` mostra teto vs uso real |
+| VirtualBox no Windows 11 lento | Provável: VBox rodando sobre Hyper-V (VBS/Memory Integrity), sem virtio | KVM no kernel + drivers virtio: bem mais leve |
 
 ## Próximos Passos
 
-- Registrar a saída real da verificação (seção 4).
 - Recriar o Wazuh manager e o Windows 10 alvo com os MACs reservados (`:20` e `:30`).
 - Validar se o host alcança o dashboard do Wazuh direto em `10.10.10.20`, sem port forwarding.
