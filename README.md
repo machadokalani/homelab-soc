@@ -23,8 +23,8 @@ Por que a troca de hypervisor: ver o [ADR 00 — Migração VirtualBox → KVM](
 ##  Stack utilizada
 
 **v2 (atual)**
-- KVM/QEMU + libvirt + virt-manager (hypervisor)
-- Ubuntu (host)
+- KVM/QEMU + libvirt 12.0.0 + virt-manager (hypervisor)
+- Ubuntu 26.04.1 LTS (host)
 - Kali Linux (VM)
 - Wazuh (SIEM) + Sysmon — em reconstrução
 - Windows 10 (64-bit) (VM alvo) — em reconstrução

@@ -8,8 +8,8 @@ O porquê: na v1, a rede era uma soma de ajustes manuais (dois adaptadores por V
 
 ## Ambiente
 
-- **Host:** Ubuntu [PREENCHER: versão]
-- **Hypervisor:** KVM/QEMU, gerenciado por libvirt [PREENCHER: versão do libvirt, `virsh --version`] e virt-manager
+- **Host:** Ubuntu 26.04.1 LTS
+- **Hypervisor:** KVM/QEMU, gerenciado por libvirt 12.0.0 (`libvirtd`) e virt-manager
 - **Arquivo de definição:** `infra/libvirt/soclab.xml`
 
 Resumo da rede, conforme o XML:
