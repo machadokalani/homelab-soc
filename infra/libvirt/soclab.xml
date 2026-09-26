@@ -1,0 +1,14 @@
+<network>
+  <name>soclab</name>
+  <forward mode='nat'/>
+  <bridge name='virbr10' stp='on' delay='0'/>
+  <domain name='soclab' localOnly='yes'/>
+  <ip address='10.10.10.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='10.10.10.100' end='10.10.10.200'/>
+      <host mac='52:54:00:10:00:10' name='kali'  ip='10.10.10.10'/>
+      <host mac='52:54:00:10:00:20' name='wazuh' ip='10.10.10.20'/>
+      <host mac='52:54:00:10:00:30' name='win10' ip='10.10.10.30'/>
+    </dhcp>
+  </ip>
+</network>
