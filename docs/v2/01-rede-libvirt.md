@@ -79,7 +79,7 @@ virsh -c qemu:///system net-start soclab
 virsh -c qemu:///system net-autostart soclab
 ```
 
-A ordem importa: `net-define` apenas registra a definição, `net-start` a coloca em funcionamento naquele momento e `net-autostart` garante que ela volte depois de um reboot. Sem o terceiro passo, a rede fica definida mas desligada depois de reiniciar o host, e as VMs não sobem com a interface ligada.
+A ordem importa: `net-define` apenas registra a definição, `net-start` a coloca em funcionamento naquele momento e `net-autostart` garante que ela volte depois de um reboot. Sem o terceiro passo, a rede fica definida mas desligada depois de reiniciar o host, e as VMs ligadas a ela não conseguem iniciar: o libvirt recusa com o erro de rede inativa (`network 'soclab' is not active`).
 
 ### 4. Verificação
 

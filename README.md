@@ -32,7 +32,7 @@ Por que a troca de hypervisor: ver o [ADR 00 — Migração VirtualBox → KVM](
 **v1 (histórico)**
 - VirtualBox (hypervisor), host Windows 11
 - Ubuntu 25.04 "Plucky Puffin" (VM base)
-- Ubuntu Server 26.04 LTS "Resonant Rhino" (64-bit) (Wazuh)
+- Ubuntu Server 26.04 LTS "Resolute Raccoon" (64-bit) (Wazuh)
 - Windows 10 (64-bit) (VM alvo)
 
 ## 📁 Documentação detalhada

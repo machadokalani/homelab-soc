@@ -42,7 +42,7 @@ Na v1, o workaround para os travamentos foi justamente fazer o VirtualBox **imit
 Nenhum dos dois cria RAM do nada, mas ambos dão margem numa máquina de 16 GB.
 
 **4. Relevância no mercado.**
-libvirt/KVM é a base do **Proxmox VE** e do **OpenStack**, além de ser o padrão de virtualização em servidores Linux. Aprender a operar essa stack (virsh, redes libvirt, discos qcow2) é conhecimento transferível para ambientes reais, diferente de um hypervisor de desktop.
+KVM/QEMU é a base do **Proxmox VE** (que usa ferramentas próprias, não o libvirt), e libvirt + KVM é o driver de virtualização mais usado no **OpenStack** (Nova), além de ser o padrão de virtualização em servidores Linux. Aprender a operar essa stack (virsh, redes libvirt, discos qcow2) é conhecimento transferível para ambientes reais, diferente de um hypervisor de desktop.
 
 **5. VirtualBox e KVM não devem coexistir no mesmo host.**
 Os dois disputam a mesma extensão de virtualização por hardware (VT-x). É o mesmo tipo de conflito já visto na v1 entre VirtualBox e Hyper-V/VBS no Windows. Manter os dois exigiria descarregar módulos alternadamente. Como o lab está sendo reconstruído, escolher um só é a opção limpa.

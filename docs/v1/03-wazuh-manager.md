@@ -15,7 +15,7 @@ no endpoint, manager centralizado).
 ## Ambiente
 
 Sistema operacional da VM:
-- Ubuntu 26.04 LTS "Resonant Rhino" (64-bit)
+- Ubuntu 26.04 LTS "Resolute Raccoon" (64-bit)
 - Optei pela versão LTS (em vez de uma intermediária como a 25.04 usada
   na VM base) por ser uma peça de infraestrutura do lab, não de estudo
   exploratório — LTS prioriza estabilidade e ciclo de suporte mais
