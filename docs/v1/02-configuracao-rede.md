@@ -1,5 +1,7 @@
 # Configuração de Rede da VM Base
 
+> Documento da v1 (VirtualBox, host Windows 11). Mantido como histórico; ver [docs/v2/](../v2/).
+
 ## Objetivo
 Configurar a VM base do laboratório com **duas interfaces de rede** para
 separar dois contextos distintos: acesso à internet (para instalar

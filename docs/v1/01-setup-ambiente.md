@@ -1,5 +1,7 @@
 # Setup do Ambiente — VM Base
 
+> Documento da v1 (VirtualBox, host Windows 11). Mantido como histórico; ver [docs/v2/](../v2/).
+
 ## Objetivo
 
 O primeiro passo foi configurar uma VM com Ubuntu "cru", sem nenhuma 

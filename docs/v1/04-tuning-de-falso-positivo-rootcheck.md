@@ -1,5 +1,7 @@
 # Tuning de Falso Positivo — Rootcheck (Trojaned md5sum)
 
+> Documento da v1 (VirtualBox, host Windows 11). Mantido como histórico; ver [docs/v2/](../v2/).
+
 ## Objetivo
 
 Eliminar um falso positivo recorrente gerado pelo módulo rootcheck do Wazuh

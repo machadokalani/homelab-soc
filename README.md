@@ -23,18 +23,18 @@ Estágio atual:
 ## 📁 Documentação detalhada
 
 ### Setup e Infraestrutura
-- [Setup do Ambiente — VM Base](docs/01-setup-ambiente.md)
-  - [Setup do Ambiente — VM Alvo](docs/01.01-setup-alvo.md)
-- [Configuração de Rede](docs/02-configuracao-rede.md)
-- [Configuração da VM Wazuh](docs/03-wazuh-manager.md)
-  - [Integração do Sysmon](docs/03.01-integracao-do-sysmon.md)
-- [Tuning de Falso Positivo - Rootcheck](docs/04-tuning-de-falso-positivo-rootcheck.md)
+- [Setup do Ambiente — VM Base](docs/v1/01-setup-ambiente.md)
+  - [Setup do Ambiente — VM Alvo](docs/v1/01.01-setup-alvo.md)
+- [Configuração de Rede](docs/v1/02-configuracao-rede.md)
+- [Configuração da VM Wazuh](docs/v1/03-wazuh-manager.md)
+  - [Integração do Sysmon](docs/v1/03.01-integracao-do-sysmon.md)
+- [Tuning de Falso Positivo - Rootcheck](docs/v1/04-tuning-de-falso-positivo-rootcheck.md)
 
 ### Simulações de Ataque (Atomic Red Team)
 Testes práticos de técnicas MITRE ATT&CK, validando a resposta do pipeline de detecção ponta a ponta.
-- [T1059.001 — PowerShell Encoded Command](docs/atomic-red-team/01-t1059.001-encoded-command.md)
-- [T1136.001 — Criação de Conta e Escalonamento de Privilégio](docs/atomic-red-team/02-t1136.001-privilege-escalation.md)
-- [T1685.005 — Simulação de Limpeza de Log de Auditoria](docs/atomic-red-team/03-t1685.005-clear-event-logs.md)
+- [T1059.001 — PowerShell Encoded Command](docs/v1/atomic-red-team/01-t1059.001-encoded-command.md)
+- [T1136.001 — Criação de Conta e Escalonamento de Privilégio](docs/v1/atomic-red-team/02-t1136.001-privilege-escalation.md)
+- [T1685.005 — Simulação de Limpeza de Log de Auditoria](docs/v1/atomic-red-team/03-t1685.005-clear-event-logs.md)
 
 ### Playbooks de Triagem
 Processos reutilizáveis de decisão para triagem de alertas — diferente dos docs acima, que registram investigações pontuais, estes documentam o raciocínio de análise aplicável a qualquer alerta futuro do mesmo tipo.

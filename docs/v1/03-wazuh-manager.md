@@ -1,5 +1,7 @@
 # Wazuh Manager — Instalação e Primeiro Acesso
 
+> Documento da v1 (VirtualBox, host Windows 11). Mantido como histórico; ver [docs/v2/](../v2/).
+
 ## Objetivo
 Com a VM base já validada, o próximo passo foi montar uma VM dedicada
 exclusivamente à infraestrutura de monitoramento: o **Wazuh manager**
